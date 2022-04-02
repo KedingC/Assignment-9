@@ -1,0 +1,28 @@
+---
+title: "workflow assignment"
+author: "Keding Chen"
+date: "4/1/2022"
+output: html_document
+---
+#Data:
+```{r}
+dessert<-c("Mango Dessert Cups", "chocolate milk shake", "Tiramisu", "apple pie","coconut yogurt cake")
+rating<-c(5,2,3,3,4)
+quantity<-c(4,1,1,2,4)
+Dat<-cbind.data.frame(dessert,rating,quantity)
+write.csv(Dat,"~/Desktop/2022/PSY 4960/Final project/Final project-Keding/dat.cvs", row.names = FALSE)
+```
+#Summary:
+```{r}
+Dat$rating<-as.numeric(Dat$rating)
+Dat$quantity<-as.factor(Dat$quantity) # 1-4 may refer to a little, some, a lot, and really a lot.
+summary(Dat)
+```
+# Graph:
+```{r}
+library(ggplot2)
+ggplot(Dat, aes(dessert, rating))+geom_point()
+ggplot(Dat, aes(dessert, rating))+geom_bar(stat="identity")
+ggplot(Dat, aes(dessert, quantity))+geom_bar(stat="identity")
+```
+
